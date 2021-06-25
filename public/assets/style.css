@@ -1,0 +1,21 @@
+body{
+    background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(img/basketball.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.text-white{
+    color: white;
+}
+
+.form-group{
+    color: white;
+}
+#container-box{
+    background-color: black;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
