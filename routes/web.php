@@ -20,3 +20,6 @@ Route::get('/', function () {
 
 Route::get('/sendemail',[App\Http\Controllers\SendEmailController::class,'index']);
 Route::post('/sendemail/send',[App\Http\Controllers\SendEmailController::class,'send']);
+Route::get('/app', function () {
+    return view('layouts.app');
+});

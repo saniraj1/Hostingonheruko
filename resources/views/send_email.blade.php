@@ -1,76 +1,33 @@
-<!DOCTYPE html>
-<html>
- <head>
-  <title>Malvern Tigers Basketball Club</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style type="text/css">
+@extends('layouts.app')
+@section('form')
 
+    <div class="form">
+        <form action="{{url('sendemail/send')}}" method="post" role="form" class="php-email-form">
+            @csrf
 
-   .box{
-    width:600px;
-    margin:0 auto;
-    border:1px solid #ccc;
-   }
-   .has-error
-   {
-    border-color:#cc0000;
-    background-color:#ffff99;
-   }
-   .text{
-       text-align: center;
-       color:black;
-   }
-  </style>
-  <link rel="stylesheet" href="{{asset('assets/style.css')}}">
- </head>
- <body>
-  <br />
-  <br />
-  <br />
-  <img src="{{asset('assets/img/tigers_logo.jpg')}}" style="width: 15rem display:flex" alt="">
-<h1>MALVERN TIGERS BasketBALL CLUB...</h1>
-
-  <h2 class="text">Website coming soon!!!!!</h2>
- 
-  <div class="container box" id="container-box">
-   <h3 class="text-white" align="center">For more enquiries contact us.</h3><br />
-   @if (count($errors) > 0)
-    <div class="alert alert-danger">
-     <button type="button" class="close" data-dismiss="alert">×</button>
-     <ul>
-      @foreach ($errors->all() as $error)
-       <li>{{ $error }}</li>
-      @endforeach
-     </ul>
+        <div class="row">
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert"></button>
+                        <strong>{{ $message }}</strong>
+                </div>
+            @endif
+            <div class="col-md form-group">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-md form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        </div>
+        <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit">Send Message</button></div>
+        </form>
     </div>
-   @endif
-   @if ($message = Session::get('success'))
-   <div class="alert alert-success alert-block">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-           <strong>{{ $message }}</strong>
-   </div>
-   @endif
-   <form method="post" action="{{url('sendemail/send')}}">
-    {{ csrf_field() }}
-    <div class="form-group ">
-     <label>Enter Your Name</label>
-     <input type="text" name="name" class="form-control" value="" />
-    </div>
-    <div class="form-group">
-     <label>Enter Your Email</label>
-     <input type="text" name="email" class="form-control" value="" />
-    </div>
-    <div class="form-group">
-     <label>Enter Your Message</label>
-     <textarea name="message" class="form-control"></textarea>
-    </div>
-    <div class="form-group">
-     <input type="submit" name="send" class="btn btn-info" value="Send" />
-    </div>
-   </form>
-   
-  </div>
- </body>
-</html>
+  @endsection
