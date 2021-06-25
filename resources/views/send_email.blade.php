@@ -20,7 +20,7 @@
    }
    .text{
        text-align: center;
-       color:white;
+       color:black;
    }
   </style>
   <link rel="stylesheet" href="{{asset('assets/style.css')}}">
@@ -29,9 +29,11 @@
   <br />
   <br />
   <br />
+  <img src="{{asset('assets/img/tigers_logo.jpg')}}" style="width: 15rem display:flex" alt="">
 <h1>MALVERN TIGERS BasketBALL CLUB...</h1>
 
   <h2 class="text">Website coming soon!!!!!</h2>
+ 
   <div class="container box" id="container-box">
    <h3 class="text-white" align="center">For more enquiries contact us.</h3><br />
    @if (count($errors) > 0)
